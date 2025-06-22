@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pacman-game-deployment
-  # namespace: mi-app-ns # Descomenta y ajusta si usas un namespace específico
+  # namespace: mi-app-ns # Descomenta si usas un namespace específico
   labels:
     app: pacman-game
 spec:
@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: pacman
-        image: ghostfire/pacman-html5:latest # <-- Imagen pública del juego Pac-Man
+        image: denysvitali/pacman:latest # <-- ¡Imagen de Pac-Man verificada!
         ports:
         - containerPort: 80 # Se asume que el juego Pac-Man sirve en el puerto 80
         resources:
