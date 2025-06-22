@@ -7,6 +7,6 @@ spec:
     app: nginx
   ports:
     - protocol: TCP
-      port: 80 # Puerto del Service
+      port: 80 # Puerto del Service (lo que escuchará el LoadBalancer)
       targetPort: 80 # Puerto del contenedor Nginx
-  type: NodePort # Expone el Service en un puerto en cada nodo (el puerto es dinámico, >30000)
+  type: LoadBalancer # Exponer como LoadBalancer
