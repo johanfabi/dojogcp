@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1 # Mínimo de réplicas para un nodo f1-micro
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest # Puedes especificar una versión si lo prefieres, e.g., nginx:1.25.3
+        ports:
+        - containerPort: 80
+        resources:
+          requests: # Solicitud mínima de recursos para que el Pod pueda ser programado
+            cpu: "50m"  # 50 milicores de CPU (0.05 CPU)
+            memory: "64Mi" # 64 Megabytes de RAM
+          limits: # Límites de recursos para evitar que el Pod consuma demasiado
+            cpu: "100m" # 100 milicores de CPU (0.1 CPU)
+            memory: "128Mi" # 128 Megabytes de RAM
