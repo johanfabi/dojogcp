@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-service
+  name: game-2048-service
 spec:
   selector:
-    app: nginx
+    app: game-2048
   ports:
     - protocol: TCP
       port: 80 # Puerto del Service (lo que escuchará el LoadBalancer)
