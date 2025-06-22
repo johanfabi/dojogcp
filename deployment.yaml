@@ -1,28 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mario-deployment
+  name: game-2048-deployment
+  # namespace: mi-app-ns # Descomenta si usas un namespace específico
   labels:
-    app: super-mario
+    app: game-2048
 spec:
   replicas: 1 # Mínimo de réplicas para un nodo f1-micro
   selector:
     matchLabels:
-      app: super-mario
+      app: game-2048
   template:
     metadata:
       labels:
-        app: super-mario
+        app: game-2048
     spec:
       containers:
-      - name: mario-web
-        image: mario20/super-mario-bros:latest # <-- ¡Imagen de Super Mario!
+      - name: game-2048
+        image: alexwhen/docker-2048:latest # <-- ¡Imagen pública del juego 2048!
         ports:
-        - containerPort: 80 # Asumo que esta imagen sirve en el puerto 80
+        - containerPort: 80 # El juego 2048 suele servir en el puerto 80
         resources:
-          requests: # Solicitud mínima de recursos
-            cpu: "75m"  # Un poco más de CPU por si acaso
-            memory: "96Mi" # Un poco más de RAM por si acaso
+          requests: # Solicitud mínima de recursos para un f1-micro
+            cpu: "50m"
+            memory: "64Mi"
           limits:
-            cpu: "150m"
-            memory: "192Mi"
+            cpu: "100m"
+            memory: "128Mi"
