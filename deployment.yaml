@@ -1,29 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: pacman-game-deployment
-  # namespace: mi-app-ns # Descomenta si usas un namespace específico
+  name: supertuxkart-game-deployment
   labels:
-    app: pacman-game
+    app: supertuxkart-game
 spec:
-  replicas: 1 # Mínimo de réplicas para un nodo f1-micro
+  replicas: 1
   selector:
     matchLabels:
-      app: pacman-game
+      app: supertuxkart-game
   template:
     metadata:
       labels:
-        app: pacman-game
+        app: supertuxkart-game
     spec:
       containers:
-      - name: pacman
-        image: denysvitali/pacman:latest # <-- ¡Imagen de Pac-Man verificada!
+      - name: supertuxkart
+        image: linuxserver/supertuxkart
         ports:
-        - containerPort: 80 # Se asume que el juego Pac-Man sirve en el puerto 80
+        - containerPort: 8080 # Supertuxkart no sirve en puerto, placeholder si deseas exponer interfaz
         resources:
-          requests: # Solicitud mínima de recursos para un f1-micro
-            cpu: "75m"  # Un poco más que Nginx por ser un juego
-            memory: "96Mi" # Un poco más que Nginx por ser un juego
-          limits:
+          requests:
             cpu: "150m"
-            memory: "192Mi"
+            memory: "256Mi"
+          limits:
+            cpu: "300m"
+            memory: "512Mi"
