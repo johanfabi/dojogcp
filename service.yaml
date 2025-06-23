@@ -8,5 +8,5 @@ spec:
   ports:
     - protocol: TCP
       port: 80 # Puerto del Service (lo que escuchará el LoadBalancer)
-      targetPort: 80 # Puerto del contenedor Nginx
+      targetPort: 80 # Puerto del contenedor
   type: LoadBalancer # Exponer como LoadBalancer
