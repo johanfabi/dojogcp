@@ -22,9 +22,9 @@ spec:
         - containerPort: 80 # El juego 2048 suele servir en el puerto 80
         resources:
           requests: # Solicitud mínima de recursos para un f1-micro
-            cpu: "50m"
-            memory: "64Mi"
+            cpu: "50m" # 50 milicores de CPU (0.05 CPU)
+            memory: "64Mi" # 64 megabytes de memoria.
           limits:
-            cpu: "100m"
-            memory: "128Mi"
+            cpu: "100m" # 100 milicores de CPU (0.1 CPU)
+            memory: "128Mi" # 128 megabytes de memoria.
 
