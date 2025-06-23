@@ -6,7 +6,7 @@ metadata:
   labels:
     app: game-2048
 spec:
-  replicas: 1 # Mínimo de réplicas para un nodo f1-micro
+  replicas: 1 # Mínimo de réplicas
   selector:
     matchLabels:
       app: game-2048
@@ -17,14 +17,14 @@ spec:
     spec:
       containers:
       - name: game-2048
-        image: alexwhen/docker-2048:latest # <-- ¡Imagen pública del juego 2048!
+        image: alexwhen/docker-2048:latest # Imagen Docker
         ports:
         - containerPort: 80 # El juego 2048 suele servir en el puerto 80
-        resources:
+        resources: # Recursos mínimos del Pod
           requests: # Solicitud mínima de recursos para un f1-micro
             cpu: "50m" # 50 milicores de CPU (0.05 CPU)
-            memory: "64Mi" # 64 megabytes de memoria.
-          limits:
+            memory: "64Mi" # 64 megabytes de memoria
+          limits: # Límites de recursos para evitar que el Pod consuma demasiado
             cpu: "100m" # 100 milicores de CPU (0.1 CPU)
-            memory: "128Mi" # 128 megabytes de memoria.
+            memory: "128Mi" # 128 megabytes de memoria
 
