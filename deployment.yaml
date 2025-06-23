@@ -1,28 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: supertuxkart-game-deployment
+  name: tetris-game-deployment
   labels:
-    app: supertuxkart-game
+    app: tetris-game
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: supertuxkart-game
+      app: tetris-game
   template:
     metadata:
       labels:
-        app: supertuxkart-game
+        app: tetris-game
     spec:
       containers:
-      - name: supertuxkart
-        image: linuxserver/supertuxkart
+      - name: tetris
+        image: nacyot/docker-tetris
         ports:
-        - containerPort: 8080 # Supertuxkart no sirve en puerto, placeholder si deseas exponer interfaz
+        - containerPort: 8080
         resources:
           requests:
-            cpu: "150m"
-            memory: "256Mi"
+            cpu: "75m"
+            memory: "96Mi"
           limits:
-            cpu: "300m"
-            memory: "512Mi"
+            cpu: "150m"
+            memory: "192Mi"
