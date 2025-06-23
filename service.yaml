@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: tetris-game-service
+  name: snake-game-service
 spec:
   selector:
-    app: tetris-game
+    app: snake-game
   ports:
     - protocol: TCP
       port: 80 # Puerto del Service (lo que escuchará el LoadBalancer)
